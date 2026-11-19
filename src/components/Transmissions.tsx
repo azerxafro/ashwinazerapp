@@ -51,8 +51,14 @@ Artist: Ashwin Azer (Ashwin Ramesh)
 Alias: Lucid ASH
 Genre: Contemporary R&B // Melodic Hip-Hop
 Imprint: Monadelta Productions
-Location: Bengaluru, India / Global
-Release Era: THE AZER (Vol. 2) — Releasing October 2, 2026
+Location: Coimbatore, India / Global
+Press Contact: ashwinazer@gmail.com
+Current Era: 2026 // "NERAM" ERA
+
+FEATURED ANNOUNCEMENT:
+Ashwin Azer will release “Neram” on November 24, 2026. Hailing from Coimbatore, India, the new track marks a meaningful moment for the artist: it was the first song he ever composed, written while he was in 10th grade.
+Collaborators: Reymen Rodericks × Ashwin Azer × Havoc Surya
+Featured Quote: “Want to get overly famous and fake my death” — Juice WRLD
 
 OFFICIAL BIO & MANIFESTO:
 ${ARTIST_INFO.manifesto}
@@ -61,7 +67,8 @@ ACCOLADES & MILESTONES:
 ${ARTIST_INFO.accolades.map((a) => `- ${a}`).join('\n')}
 
 DISCOGRAPHY:
-- THE AZER (Vol. 2) [Upcoming Album, Oct 2, 2026]
+- Neram [Single with Reymen Rodericks & Havoc Surya, Drops Nov 24, 2026]
+- THE AZER (Vol. 2) [Upcoming Album, 2026]
 - DESTINY [Studio LP, 2024]
 - Legends & Lovers [Single, 2023]
 - THE AZER (Vol. 1) [Mixtape, 2022]
@@ -73,8 +80,9 @@ VERIFIED STREAMING LINKS:
 - Instagram: ${ARTIST_INFO.links.instagram}
 - MusicBrainz: ${ARTIST_INFO.links.musicbrainz}
 
-BOOKING & MANAGEMENT:
-Contact: ${ARTIST_INFO.links.contactEmail}
+PRESS & MANAGEMENT:
+Direct Press: ashwinazer@gmail.com
+Management: contact@monadelta.me
 Website: ${ARTIST_INFO.links.website}
 CATALOG STAMP: CAT# AZR-2026-PRESS
 ==================================================
@@ -312,12 +320,12 @@ CATALOG STAMP: CAT# AZR-2026-PRESS
 
             <div className="font-mono text-xs space-y-4 text-zinc-300">
               <div>
-                <span className="text-zinc-500 uppercase block">PRIMARY DESK:</span>
+                <span className="text-zinc-500 uppercase block">PRIMARY PRESS DESK:</span>
                 <a
-                  href={`mailto:${ARTIST_INFO.links.contactEmail}`}
+                  href="mailto:ashwinazer@gmail.com"
                   className="text-[#EEFF00] font-bold text-sm hover:underline"
                 >
-                  {ARTIST_INFO.links.contactEmail}
+                  ashwinazer@gmail.com
                 </a>
               </div>
 
@@ -328,12 +336,12 @@ CATALOG STAMP: CAT# AZR-2026-PRESS
 
               <div>
                 <span className="text-zinc-500 uppercase block">SPATIAL LOCUS:</span>
-                <span>Bengaluru, India // {ARTIST_INFO.coordinates}</span>
+                <span>Coimbatore, India // {ARTIST_INFO.coordinates}</span>
               </div>
 
               <div>
                 <span className="text-zinc-500 uppercase block">CURRENT ERA:</span>
-                <span className="text-[#EEFF00] font-bold">THE AZER (VOL. 2) CYCLE</span>
+                <span className="text-[#EEFF00] font-bold">“NERAM” & THE AZER CYCLE</span>
               </div>
             </div>
 

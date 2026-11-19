@@ -97,22 +97,31 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
 
             {/* Active Track Dossier & Playback Bar */}
             <div className="space-y-4">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="font-mono text-[11px] font-bold text-[#7B2CBF] uppercase tracking-wider block">
-                    {selectedTrack.catalogNumber} • {selectedTrack.type}
-                  </span>
-                  <h3 className="font-['Syne',sans-serif] font-black text-2xl sm:text-3xl tracking-tight uppercase mt-0.5">
-                    {selectedTrack.title}
-                  </h3>
-                  <span className="font-mono text-xs text-zinc-800">
-                    DURATION: {selectedTrack.duration} // ERA: {selectedTrack.releaseYear}
-                  </span>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-14 h-14 bg-[#090909] border-2 border-[#090909] shadow-[2px_2px_0px_#7B2CBF] overflow-hidden shrink-0">
+                    <img
+                      src={selectedTrack.coverImage}
+                      alt={selectedTrack.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[11px] font-bold text-[#7B2CBF] uppercase tracking-wider block">
+                      {selectedTrack.catalogNumber} • {selectedTrack.type}
+                    </span>
+                    <h3 className="font-['Syne',sans-serif] font-black text-2xl sm:text-3xl tracking-tight uppercase mt-0.5">
+                      {selectedTrack.title}
+                    </h3>
+                    <span className="font-mono text-xs text-zinc-800">
+                      DURATION: {selectedTrack.duration} // {selectedTrack.releaseYear}
+                    </span>
+                  </div>
                 </div>
 
                 <button
                   onClick={() => handlePlayToggle(selectedTrack)}
-                  className={`p-4 border-3 border-[#090909] shadow-[4px_4px_0px_#090909] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer transition-all ${
+                  className={`p-4 border-3 border-[#090909] shadow-[4px_4px_0px_#090909] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer transition-all shrink-0 ${
                     isPlaying
                       ? 'bg-[#7B2CBF] text-[#EEFF00]'
                       : 'bg-[#090909] text-[#EEFF00] hover:bg-[#7B2CBF]'

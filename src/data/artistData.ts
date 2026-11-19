@@ -5,17 +5,34 @@ export const ARTIST_INFO = {
   legalName: 'Ashwin Ramesh',
   alias: 'Lucid ASH',
   genre: 'Contemporary R&B // Melodic Hip-Hop // Alternative R&B',
-  era: '2026 // VOL. 2 ERA',
+  era: '2026 // NERAM ERA',
   label: 'Monadelta Productions',
   status: 'ACTIVE // SIGNALS BROADCASTING',
-  location: 'India // Global',
-  coordinates: '12.9716° N, 77.5946° E',
-  manifesto: `Music is more than sound for Ashwin Azer—it's a destiny. Merging the raw, subterranean weight of contemporary R&B with razor-sharp melodic hip-hop cadence, Azer crafts sonics that explore the friction and euphoria of modern life. Every beat is an architectural experiment, cutting through sterile production with visceral grit and unapologetic emotional intensity.`,
+  location: 'Coimbatore, India // Global',
+  coordinates: '11.0168° N, 76.9558° E',
+  pressEmail: 'ashwinazer@gmail.com',
+  featuredQuote: '“Want to get overly famous and fake my death” — Juice WRLD',
+  manifesto: `Music is more than sound for Ashwin Azer—it's a destiny. Merging the raw, subterranean weight of contemporary R&B with razor-sharp melodic hip-hop cadence, Azer crafts sonics that explore the friction and euphoria of modern life. His approach embraces experimentation and boundary-pushing, blending traditional cultural roots with a modern edge to tell stories that reflect the evolution of his sound.`,
+  neramAnnouncement: {
+    title: 'Ashwin Azer Announces New Release “Neram”',
+    collaborators: 'Reymen Rodericks × Ashwin Azer × Havoc Surya',
+    releaseDate: 'November 24, 2026',
+    origin: 'Coimbatore, India',
+    coverImage: '/images/neram-cover.jpg',
+    story: `Ashwin Azer will release “Neram” on November 24, 2026. Hailing from Coimbatore, India, the new track marks a meaningful moment for the artist: it was the first song he ever composed, written while he was in 10th grade.
+
+“Neram” carries the foundation of Ashwin Azer’s creative journey, revisiting an early composition that reflects the beginnings of his evolving sound. The release arrives as a personal milestone, connecting the artist’s earliest songwriting experience with his present-day musical identity.
+
+Ashwin Azer’s music draws from cultural roots and lived experience, transforming raw emotion into tracks designed to resonate deeply. His approach embraces experimentation and boundary-pushing, blending traditional influences with a modern edge to tell stories that reflect the evolution of his sound.`,
+    quote: '“Want to get overly famous and fake my death” — Juice WRLD',
+    pressContact: 'ashwinazer@gmail.com'
+  },
   accolades: [
+    'Upcoming Release: “Neram” with Reymen Rodericks & Havoc Surya — Drops Nov 24, 2026',
+    'Origin: First song ever composed, written in 10th grade in Coimbatore, India',
     'WallMag Rap Awards 2026 — Top 250 Creator Nominee',
     'Founder & Principal Sound Architect at Monadelta Productions',
-    'Self-produced discography exceeding 500,000+ organic streams',
-    'Pioneer of 4D spatial frequency design in South Asian independent music'
+    'Self-produced discography exceeding 500,000+ organic streams'
   ],
   links: {
     spotify: 'https://open.spotify.com/artist/6M1VSmwtcuwS1DnvXTGk7P',
@@ -26,11 +43,30 @@ export const ARTIST_INFO = {
     instagram: 'https://instagram.com/theashwinazer',
     musicbrainz: 'https://musicbrainz.org/artist/b43aaeda-d79e-4711-b242-feebf44c76fb',
     website: 'https://ashwinazer.rocks',
-    contactEmail: 'contact@monadelta.me'
+    contactEmail: 'ashwinazer@gmail.com',
+    managementEmail: 'contact@monadelta.me'
   }
 };
 
 export const TRACKS: Track[] = [
+  {
+    id: 'neram',
+    title: 'Neram',
+    releaseYear: 'Nov 24, 2026',
+    type: 'UPCOMING',
+    catalogNumber: 'CAT# AZR-003-NRM',
+    coverImage: '/images/neram-cover.jpg',
+    description: 'Reymen Rodericks × Ashwin Azer × Havoc Surya. The foundational genesis of Ashwin Azer\'s creative journey. The very first song he ever composed, written while in 10th grade in Coimbatore, India. Connecting his earliest songwriting experience with modern 4D sonic architecture. Dropping November 24, 2026.',
+    spotifyUrl: 'https://open.spotify.com/artist/6M1VSmwtcuwS1DnvXTGk7P',
+    appleMusicUrl: 'https://music.apple.com/artist/1497428225',
+    youtubeUrl: 'https://www.youtube.com/@ashwinazer',
+    bpm: 118,
+    key: 'E Minor',
+    duration: '03:15',
+    vibe: 'Genesis Composition // Cultural Roots // Coimbatore Origins',
+    lyricsSnippet: 'Want to get overly famous and fake my death — Juice WRLD',
+    synthRiffNote: 'E2'
+  },
   {
     id: 'azer-vol-2',
     title: 'THE AZER (Vol. 2)',
@@ -38,7 +74,7 @@ export const TRACKS: Track[] = [
     type: 'UPCOMING',
     catalogNumber: 'CAT# AZR-002-LTD',
     coverImage: '/images/hero-portrait.png',
-    description: 'The monumental second chapter. Heavy distorted 808s colliding with lush vocal tapestries and existential late-night reflections. Releasing worldwide October 2, 2026.',
+    description: 'The monumental second chapter. Heavy distorted 808s colliding with lush vocal tapestries and existential late-night reflections.',
     spotifyUrl: 'https://open.spotify.com/artist/6M1VSmwtcuwS1DnvXTGk7P',
     appleMusicUrl: 'https://music.apple.com/artist/1497428225',
     youtubeUrl: 'https://www.youtube.com/@ashwinazer',
@@ -106,6 +142,16 @@ export const TRACKS: Track[] = [
 ];
 
 export const ARCHIVE_ITEMS: ArchiveItem[] = [
+  {
+    id: 'arch-neram',
+    title: '“NERAM” // OFFICIAL COVER ART',
+    type: 'COVER ART',
+    year: 'NOV 2026',
+    image: '/images/neram-cover.jpg',
+    caption: 'Reymen Rodericks × Ashwin Azer × Havoc Surya — "Neram". First song ever composed, written in 10th grade in Coimbatore. Drops Nov 24, 2026.',
+    aspect: 'square',
+    tag: 'NEW SINGLE'
+  },
   {
     id: 'arch-1',
     title: 'THE 4D HYPERCUBE // HERO CUTOUT',

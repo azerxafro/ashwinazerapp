@@ -42,29 +42,31 @@ export const Hero: React.FC<HeroProps> = ({ onExploreVault, onFlash }) => {
       {/* Background Ticker Tape (Top) */}
       <div className="w-full bg-[#090909] text-[#EEFF00] py-2 border-y-2 border-[#090909] overflow-hidden whitespace-nowrap font-mono text-xs sm:text-sm font-black tracking-widest flex items-center shadow-[0_4px_0_#7B2CBF]">
         <div className="animate-[marquee_24s_linear_infinite] flex items-center space-x-8 shrink-0">
-          <span>[SIGNAL: ACTIVE // 2026 NEW ERA]</span>
+          <span className="text-[#EEFF00] bg-[#7B2CBF] px-2 py-0.5">[NEW RELEASE: "NERAM" — NOV 24, 2026]</span>
           <span className="text-[#7B2CBF]">///</span>
-          <span>ASHWIN AZER (LUCID ASH)</span>
+          <span>ASHWIN AZER (COIMBATORE, INDIA)</span>
+          <span className="text-[#7B2CBF]">///</span>
+          <span>FIRST SONG COMPOSED (WRITTEN IN 10TH GRADE)</span>
+          <span className="text-[#7B2CBF]">///</span>
+          <span className="italic text-zinc-300">“WANT TO GET OVERLY FAMOUS AND FAKE MY DEATH” — JUICE WRLD</span>
           <span className="text-[#7B2CBF]">///</span>
           <span>WALLMAG RAP AWARDS 2026 TOP 250 CREATOR</span>
           <span className="text-[#7B2CBF]">///</span>
-          <span>THE AZER (VOL. 2) ARRIVING OCT 2, 2026</span>
+          <span>THE AZER (VOL. 2) COMING 2026</span>
           <span className="text-[#7B2CBF]">///</span>
-          <span>FREQ: 432Hz // LAT: 12.9716° N, 77.5946° E</span>
-          <span className="text-[#7B2CBF]">///</span>
-          <span>4D AUDIO-REACTIVE ARCHITECTURE</span>
+          <span>FREQ: 432Hz // LAT: 11.0168° N, 76.9558° E</span>
           <span className="text-[#7B2CBF]">///</span>
         </div>
         <div className="animate-[marquee_24s_linear_infinite] flex items-center space-x-8 shrink-0" aria-hidden="true">
-          <span>[SIGNAL: ACTIVE // 2026 NEW ERA]</span>
+          <span className="text-[#EEFF00] bg-[#7B2CBF] px-2 py-0.5">[NEW RELEASE: "NERAM" — NOV 24, 2026]</span>
           <span className="text-[#7B2CBF]">///</span>
-          <span>ASHWIN AZER (LUCID ASH)</span>
+          <span>ASHWIN AZER (COIMBATORE, INDIA)</span>
+          <span className="text-[#7B2CBF]">///</span>
+          <span>FIRST SONG COMPOSED (WRITTEN IN 10TH GRADE)</span>
+          <span className="text-[#7B2CBF]">///</span>
+          <span className="italic text-zinc-300">“WANT TO GET OVERLY FAMOUS AND FAKE MY DEATH” — JUICE WRLD</span>
           <span className="text-[#7B2CBF]">///</span>
           <span>WALLMAG RAP AWARDS 2026 TOP 250 CREATOR</span>
-          <span className="text-[#7B2CBF]">///</span>
-          <span>THE AZER (VOL. 2) ARRIVING OCT 2, 2026</span>
-          <span className="text-[#7B2CBF]">///</span>
-          <span>FREQ: 432Hz // LAT: 12.9716° N, 77.5946° E</span>
           <span className="text-[#7B2CBF]">///</span>
         </div>
       </div>
@@ -75,14 +77,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreVault, onFlash }) => {
         <div className="lg:col-span-7 z-10 space-y-6">
           {/* Release Countdown / Alert Badge */}
           <div className="inline-flex flex-wrap items-center gap-2">
-            <span className="bg-[#090909] text-[#EEFF00] font-mono text-xs font-black px-3 py-1 uppercase shadow-[3px_3px_0px_#7B2CBF] -rotate-1 border border-[#090909]">
-              NEW ALBUM // OCT 2, 2026
+            <span className="bg-[#7B2CBF] text-[#EEFF00] font-mono text-xs font-black px-3 py-1 uppercase shadow-[3px_3px_0px_#090909] -rotate-1 border border-[#090909] animate-pulse">
+              NEW RELEASE // “NERAM” — NOV 24, 2026
             </span>
-            <span className="bg-[#F7F7F2] text-[#090909] font-mono text-xs font-black px-3 py-1 uppercase border-2 border-[#090909] shadow-[3px_3px_0px_#090909] rotate-1">
-              VOL. 2 INCOMING
+            <span className="bg-[#090909] text-[#EEFF00] font-mono text-xs font-black px-3 py-1 uppercase border-2 border-[#090909] shadow-[3px_3px_0px_#7B2CBF] rotate-1">
+              REYMEN RODERICKS × ASHWIN AZER × HAVOC SURYA
             </span>
-            <span className="bg-[#7B2CBF] text-[#EEFF00] font-mono text-xs font-black px-2 py-1 uppercase shadow-[2px_2px_0px_#090909]">
-              WALLMAG TOP 250
+            <span className="bg-[#F7F7F2] text-[#090909] font-mono text-xs font-black px-2 py-1 uppercase shadow-[2px_2px_0px_#090909] border border-[#090909]">
+              GENESIS COMPOSITION // 10TH GRADE
             </span>
           </div>
 
