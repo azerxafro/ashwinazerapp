@@ -29,3 +29,8 @@ dist-ssr
 
 # Local backup copies
 *copy*
+
+# Local agent skills & MCP configs
+.agents/
+.cursor/
+skills-lock.json
