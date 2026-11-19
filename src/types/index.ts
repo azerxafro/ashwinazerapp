@@ -29,6 +29,21 @@ export interface ArchiveItem {
   tag: string;
 }
 
+export interface SpotifyOEmbedResponse {
+  html: string;
+  width: number;
+  height: number;
+  version: string;
+  provider_name: string;
+  provider_url: string;
+  type: string;
+  title: string;
+  thumbnail_url?: string;
+  thumbnail_width?: number;
+  thumbnail_height?: number;
+  iframe_url?: string;
+}
+
 export interface SpotifyEmbedController {
   loadUri: (uri: string) => void;
   play: () => void;

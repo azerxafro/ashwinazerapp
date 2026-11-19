@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useId } from 'react';
-import { SpotifyEmbedController, SpotifyIFrameAPI } from '../types';
+import { SpotifyEmbedController, SpotifyIFrameAPI, SpotifyOEmbedResponse } from '../types';
 
 interface SpotifyEmbedProps {
   uri?: string;
@@ -20,6 +20,7 @@ export const SpotifyEmbed: React.FC<SpotifyEmbedProps> = ({
 }) => {
   const controllerRef = useRef<SpotifyEmbedController | null>(null);
   const [isReady, setIsReady] = useState(false);
+  const [oembedData, setOembedData] = useState<SpotifyOEmbedResponse | null>(null);
   const uniqueId = useId().replace(/:/g, '-');
   const embedTargetId = `embed-iframe-${uniqueId}`;
 
@@ -28,6 +29,7 @@ export const SpotifyEmbed: React.FC<SpotifyEmbedProps> = ({
 
   // Helper to construct Spotify embed URL for direct iframe fallback
   const getEmbedUrl = () => {
+    if (oembedData?.iframe_url) return oembedData.iframe_url;
     if (url) {
       return url.includes('/embed/') ? url : url.replace('open.spotify.com/', 'open.spotify.com/embed/');
     }
@@ -36,6 +38,36 @@ export const SpotifyEmbed: React.FC<SpotifyEmbedProps> = ({
     const id = parts[2] || '4hGOmD42QWQN7xrWaCV52e';
     return `https://open.spotify.com/embed/${type}/${id}?utm_source=generator&theme=0`;
   };
+
+  // Fetch official Spotify oEmbed data for link preview / metadata
+  useEffect(() => {
+    let isCurrent = true;
+
+    const webUrl =
+      url ||
+      (uri
+        ? `https://open.spotify.com/${uri.split(':')[1] || 'track'}/${uri.split(':')[2] || '4hGOmD42QWQN7xrWaCV52e'}`
+        : 'https://open.spotify.com/track/4hGOmD42QWQN7xrWaCV52e');
+
+    const fetchOEmbed = async () => {
+      try {
+        const response = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(webUrl)}`);
+        if (response.ok) {
+          const data: SpotifyOEmbedResponse = await response.json();
+          if (isCurrent) {
+            setOembedData(data);
+          }
+        }
+      } catch {
+        // Fallback silently to direct embed URL
+      }
+    };
+
+    fetchOEmbed();
+    return () => {
+      isCurrent = false;
+    };
+  }, [uri, url]);
 
   useEffect(() => {
     let isMounted = true;
@@ -103,7 +135,7 @@ export const SpotifyEmbed: React.FC<SpotifyEmbedProps> = ({
     <div className={`relative w-full overflow-hidden ${className}`}>
       {/* Target element for Spotify IFrame API createController */}
       <div id={embedTargetId} className="w-full">
-        {/* Instant Iframe Fallback while IFrame API controller connects */}
+        {/* Render either official oEmbed-resolved iframe or fallback iframe while controller mounts */}
         {!isReady && (
           <iframe
             src={getEmbedUrl()}
@@ -112,7 +144,7 @@ export const SpotifyEmbed: React.FC<SpotifyEmbedProps> = ({
             frameBorder="0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
-            title={title}
+            title={oembedData?.title || title}
             className="w-full border-0 rounded-none shadow-none"
           />
         )}
