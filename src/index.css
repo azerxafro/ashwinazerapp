@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --acid-yellow: #EEFF00;
+    --ink-black: #090909;
+    --riso-purple: #7B2CBF;
+    --paper-white: #F7F7F2;
+  }
+
+  body {
+    background-color: var(--acid-yellow);
+    color: var(--ink-black);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  /* Custom selection */
+  ::selection {
+    background-color: var(--ink-black);
+    color: var(--acid-yellow);
+  }
+}
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scan {
+  0% { top: 0%; opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0.9; }
+}
+
+/* Photocopy Halftone Dots Utility */
+.halftone-dots {
+  background-image: radial-gradient(#090909 20%, transparent 20%);
+  background-size: 8px 8px;
+}
+
+/* High Contrast Print Borders */
+.border-zine {
+  border: 3px solid #090909;
+  box-shadow: 4px 4px 0px #090909;
+}
+
+.border-zine-purple {
+  border: 3px solid #090909;
+  box-shadow: 4px 4px 0px #7B2CBF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EEFF00;
+  border: 1px solid #090909;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7B2CBF;
+}

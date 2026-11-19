@@ -1,10 +1,17 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { cloudflare } from "@cloudflare/vite-plugin";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
+// https://vitejs.dev/config/
 export default defineConfig({
-	optimizeDeps: {
-		exclude: ["hono", "hono/cors"],
-	},
-	plugins: [react(), cloudflare({ remoteBindings: false })],
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ['three'],
+          vendor: ['react', 'react-dom', 'lucide-react']
+        }
+      }
+    }
+  }
 });

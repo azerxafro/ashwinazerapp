@@ -1,6 +1,31 @@
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
 node_modules
 dist
-.wrangler
-.dev.vars
-*.log
+dist-ssr
+*.local
+
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.env
+.vercel
+.env*.local
+
+# Workflows requiring elevated GitHub OAuth scope
+.github/workflows/
+
+# Local backup copies
+*copy*
