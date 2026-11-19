@@ -68,14 +68,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onSectionClick, onFlash }) => {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => handleNavClick('01-hero')}
-            className="text-left group cursor-pointer"
+            className="flex items-center gap-2.5 text-left group cursor-pointer"
           >
-            <span className="font-['Syne',sans-serif] font-black text-xl sm:text-2xl tracking-tighter uppercase block leading-none group-hover:text-[#7B2CBF] transition-colors">
-              ASHWIN AZER
-            </span>
-            <span className="font-mono text-[10px] tracking-widest text-[#090909] opacity-80 block mt-0.5">
-              OFFICIAL 4D PORTAL // 2026
-            </span>
+            <img
+              src="/azer-logo.png"
+              alt="AZER Emblem"
+              className="h-8 w-auto object-contain filter drop-shadow-[2px_2px_0px_#090909] group-hover:scale-105 transition-transform"
+            />
+            <div>
+              <span className="font-['Syne',sans-serif] font-black text-lg sm:text-2xl tracking-tighter uppercase block leading-none group-hover:text-[#7B2CBF] transition-colors">
+                ASHWIN AZER
+              </span>
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-[#090909] opacity-80 block mt-0.5">
+                OFFICIAL 4D PORTAL // 2026
+              </span>
+            </div>
           </button>
 
           <div className="hidden lg:flex items-center px-2 py-0.5 bg-[#090909] text-[#EEFF00] font-mono text-[11px] tracking-wider font-bold shadow-[2px_2px_0px_#7B2CBF]">
