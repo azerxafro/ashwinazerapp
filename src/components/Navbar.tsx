@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { audioEngine } from '../audio/audioEngine';
-import { Volume2, VolumeX, Menu, X, Disc3 } from 'lucide-react';
+import { Menu, X, Disc3, Headphones, ExternalLink } from 'lucide-react';
 
 interface NavbarProps {
   onSectionClick: (id: string) => void;
@@ -8,15 +7,10 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onSectionClick, onFlash }) => {
-  const [isSoundOn, setIsSoundOn] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('01-hero');
 
   useEffect(() => {
-    const unsub = audioEngine.subscribe((m) => {
-      setIsSoundOn(m.isPlaying && !m.isMuted);
-    });
-
     const handleScroll = () => {
       const sections = ['01-hero', '02-vault', '03-archive', '04-dossier', '05-transmissions'];
       const scrollPos = window.scrollY + 200;
@@ -36,16 +30,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onSectionClick, onFlash }) => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      unsub();
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const handleSoundToggle = async () => {
-    onFlash();
-    const state = await audioEngine.toggleSound();
-    setIsSoundOn(state);
-  };
 
   const navItems = [
     { id: '01-hero', label: '01 // HERO' },
@@ -80,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSectionClick, onFlash }) => {
                 ASHWIN AZER
               </span>
               <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-[#090909] opacity-80 block mt-0.5">
-                OFFICIAL 4D PORTAL // 2026
+                OFFICIAL ARTIST PORTAL // 2026
               </span>
             </div>
           </button>
@@ -108,30 +95,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onSectionClick, onFlash }) => {
           ))}
         </div>
 
-        {/* Audio Toggle & Mobile Menu */}
+        {/* Spotify Link & Mobile Menu */}
         <div className="flex items-center space-x-3">
-          {/* Stark Brutalist Sound Toggle */}
-          <button
-            onClick={handleSoundToggle}
-            className={`flex items-center space-x-2 px-3 py-1.5 border-3 border-[#090909] font-mono text-xs font-black tracking-wider transition-all cursor-pointer shadow-[3px_3px_0px_#7B2CBF] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
-              isSoundOn
-                ? 'bg-[#7B2CBF] text-[#EEFF00] animate-pulse'
-                : 'bg-[#F7F7F2] text-[#090909] hover:bg-[#090909] hover:text-[#EEFF00]'
-            }`}
-            title="Toggle Web Audio 4D reactive engine"
+          {/* Stark Brutalist Spotify Button */}
+          <a
+            href="https://open.spotify.com/track/4hGOmD42QWQN7xrWaCV52e"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onFlash}
+            className="flex items-center space-x-2 px-3 py-1.5 border-3 border-[#090909] font-mono text-xs font-black tracking-wider transition-all cursor-pointer shadow-[3px_3px_0px_#7B2CBF] bg-[#090909] text-[#EEFF00] hover:bg-[#7B2CBF] hover:text-[#EEFF00] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            title="Stream Ashwin Azer on Spotify"
           >
-            {isSoundOn ? (
-              <>
-                <Volume2 className="w-4 h-4 animate-bounce" />
-                <span className="tracking-widest">SOUND: ON ⚡</span>
-              </>
-            ) : (
-              <>
-                <VolumeX className="w-4 h-4" />
-                <span className="tracking-widest">SOUND: OFF</span>
-              </>
-            )}
-          </button>
+            <Headphones className="w-4 h-4 text-[#EEFF00]" />
+            <span className="tracking-widest hidden sm:inline">SPOTIFY</span>
+            <ExternalLink className="w-3 h-3 opacity-75" />
+          </a>
 
           {/* Mobile hamburger toggle */}
           <button
@@ -148,8 +126,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onSectionClick, onFlash }) => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#090909] text-[#EEFF00] border-t-4 border-[#090909] px-6 py-6 space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-[#EEFF00]/30 font-mono text-xs">
-            <span>[FREQUENCY: 432Hz]</span>
-            <span className="text-[#7B2CBF] font-bold">MONADELTA RECORDS</span>
+            <span>[COIMBATORE // 2026]</span>
+            <span className="text-[#7B2CBF] font-bold">MONADELTA PRODUCTIONS</span>
           </div>
           {navItems.map((item) => (
             <button
@@ -161,6 +139,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onSectionClick, onFlash }) => {
               <Disc3 className="w-4 h-4 opacity-50" />
             </button>
           ))}
+          <a
+            href="https://open.spotify.com/track/4hGOmD42QWQN7xrWaCV52e"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onFlash}
+            className="w-full mt-2 py-3 bg-[#EEFF00] text-[#090909] font-mono text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 border-2 border-[#090909] shadow-[3px_3px_0px_#7B2CBF]"
+          >
+            <Headphones className="w-4 h-4" />
+            STREAM ON SPOTIFY
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
         </div>
       )}
     </nav>

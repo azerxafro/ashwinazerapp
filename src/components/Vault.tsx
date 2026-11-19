@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { TRACKS } from '../data/artistData';
 import { Track } from '../types';
-import { VaultVisualizerCanvas } from './VaultVisualizerCanvas';
-import { audioEngine } from '../audio/audioEngine';
+import { SpotifyEmbed } from './SpotifyEmbed';
 import {
-  Play,
-  Pause,
   ExternalLink,
   Disc,
   Headphones,
-  Radio,
+  Music2,
   FileText
 } from 'lucide-react';
 
@@ -19,19 +16,10 @@ interface VaultProps {
 
 export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
   const [selectedTrack, setSelectedTrack] = useState<Track>(TRACKS[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [hoveredTrackId, setHoveredTrackId] = useState<string | null>(null);
 
-  const handlePlayToggle = async (track: Track) => {
+  const handleSelectTrack = (track: Track) => {
     onFlash();
-    if (selectedTrack.id === track.id && isPlaying) {
-      audioEngine.stopTrack();
-      setIsPlaying(false);
-    } else {
-      setSelectedTrack(track);
-      await audioEngine.setTrack(track.id, track.bpm, track.key);
-      setIsPlaying(true);
-    }
+    setSelectedTrack(track);
   };
 
   return (
@@ -59,102 +47,65 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
               02 // THE VAULT
             </h2>
             <p className="font-mono text-xs sm:text-sm text-[#F7F7F2]/80 mt-2 uppercase tracking-wider">
-              DISCOGRAPHY // CASSETTE ARCHIVE // 4D FREQUENCY PRESSINGS
+              DISCOGRAPHY // CASSETTE ARCHIVE // STREAMING ON SPOTIFY
             </p>
           </div>
 
           <div className="flex items-center space-x-3 bg-zinc-900 border-2 border-zinc-700 p-3 font-mono text-xs text-[#EEFF00]">
-            <Radio className="w-4 h-4 animate-pulse text-[#EEFF00]" />
-            <span>SELECT TRACK TO ENGAGE 4D BLOB VISUALIZER</span>
+            <Headphones className="w-4 h-4 animate-pulse text-[#EEFF00]" />
+            <span>OFFICIAL SPOTIFY EMBED // SELECT ANY RELEASE</span>
           </div>
         </div>
 
-        {/* Two-Column Layout: Left = 4D Morphing Visualizer & Player; Right = Tilted Cassette Sleeves */}
+        {/* Two-Column Layout: Left = Official Spotify Embed Player; Right = Tilted Cassette Sleeves */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: 4D Morphing Sphere Canvas & Brutalist Mini-Player */}
+          {/* Left Column: Official Spotify Embed Player */}
           <div className="lg:col-span-5 bg-[#EEFF00] text-[#090909] p-6 border-4 border-[#090909] shadow-[10px_10px_0px_#7B2CBF] space-y-6 sticky top-24">
-            {/* Visualizer Header */}
+            {/* Player Header */}
             <div className="flex items-center justify-between border-b-2 border-[#090909] pb-3">
               <span className="font-mono text-xs font-black uppercase tracking-widest flex items-center gap-2">
-                <Disc className={`w-4 h-4 ${isPlaying ? 'animate-spin' : ''}`} />
-                4D MORPHING VISUALIZER
+                <Music2 className="w-4 h-4 text-[#7B2CBF]" />
+                SPOTIFY EMBED CONTROLLER
               </span>
               <span className="font-mono text-[11px] font-bold px-2 py-0.5 bg-[#090909] text-[#EEFF00]">
-                {selectedTrack.key} // {selectedTrack.bpm} BPM
+                {selectedTrack.type} // {selectedTrack.releaseYear}
               </span>
             </div>
 
-            {/* 3D 4D-Noise Morphing Blob Canvas */}
-            <div className="relative w-full bg-[#090909] border-3 border-[#090909] overflow-hidden flex items-center justify-center p-2 shadow-inner">
-              <VaultVisualizerCanvas
-                activeTrackId={isPlaying ? selectedTrack.id : null}
-                isHovered={Boolean(hoveredTrackId)}
+            {/* Official Spotify Embed Player via IFrame API */}
+            <div className="relative w-full border-3 border-[#090909] bg-[#090909] shadow-[4px_4px_0px_#090909] overflow-hidden">
+              <SpotifyEmbed
+                uri={selectedTrack.spotifyUri}
+                height={152}
               />
-              <div className="absolute top-2 left-2 font-mono text-[10px] text-[#EEFF00] bg-[#090909]/80 px-2 py-0.5 border border-[#EEFF00]/40">
-                MESH: 4D SIMPLEX WARP
-              </div>
             </div>
 
-            {/* Active Track Dossier & Playback Bar */}
+            {/* Active Track Dossier */}
             <div className="space-y-4">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 bg-[#090909] border-2 border-[#090909] shadow-[2px_2px_0px_#7B2CBF] overflow-hidden shrink-0">
-                    <img
-                      src={selectedTrack.coverImage}
-                      alt={selectedTrack.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <span className="font-mono text-[11px] font-bold text-[#7B2CBF] uppercase tracking-wider block">
-                      {selectedTrack.catalogNumber} • {selectedTrack.type}
-                    </span>
-                    <h3 className="font-['Syne',sans-serif] font-black text-2xl sm:text-3xl tracking-tight uppercase mt-0.5">
-                      {selectedTrack.title}
-                    </h3>
-                    <span className="font-mono text-xs text-zinc-800">
-                      DURATION: {selectedTrack.duration} // {selectedTrack.releaseYear}
-                    </span>
-                  </div>
+              <div className="flex items-start gap-3">
+                <div className="w-16 h-16 bg-[#090909] border-2 border-[#090909] shadow-[3px_3px_0px_#7B2CBF] overflow-hidden shrink-0">
+                  <img
+                    src={selectedTrack.coverImage}
+                    alt={selectedTrack.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-
-                <button
-                  onClick={() => handlePlayToggle(selectedTrack)}
-                  className={`p-4 border-3 border-[#090909] shadow-[4px_4px_0px_#090909] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer transition-all shrink-0 ${
-                    isPlaying
-                      ? 'bg-[#7B2CBF] text-[#EEFF00]'
-                      : 'bg-[#090909] text-[#EEFF00] hover:bg-[#7B2CBF]'
-                  }`}
-                  title={isPlaying ? 'Pause' : 'Play 4D synthesized riff preview'}
-                >
-                  {isPlaying ? <Pause className="w-6 h-6 fill-current" /> : <Play className="w-6 h-6 fill-current" />}
-                </button>
-              </div>
-
-              {/* Raw Monospace Waveform Scrub Bar */}
-              <div className="space-y-1">
-                <div className="flex justify-between font-mono text-[10px] text-zinc-700 font-bold">
-                  <span>WAVEFORM RASTER</span>
-                  <span>{isPlaying ? '4D AUDIO OSC: ACTIVE' : 'PREVIEW READY'}</span>
-                </div>
-                <div className="h-6 w-full bg-[#090909] p-1 flex items-center gap-[2px] overflow-hidden border border-[#090909]">
-                  {Array.from({ length: 42 }).map((_, idx) => {
-                    const heightPercent = isPlaying
-                      ? 20 + Math.abs(Math.sin((idx + Date.now() / 200) * 0.4)) * 75
-                      : 15 + Math.sin(idx * 0.5) * 20 + 20;
-                    return (
-                      <div
-                        key={idx}
-                        className={`flex-1 transition-all duration-75 ${
-                          idx % 4 === 0 ? 'bg-[#7B2CBF]' : 'bg-[#EEFF00]'
-                        }`}
-                        style={{ height: `${heightPercent}%` }}
-                      />
-                    );
-                  })}
+                <div>
+                  <span className="font-mono text-[11px] font-bold text-[#7B2CBF] uppercase tracking-wider block">
+                    {selectedTrack.catalogNumber} • {selectedTrack.type}
+                  </span>
+                  <h3 className="font-['Syne',sans-serif] font-black text-2xl sm:text-3xl tracking-tight uppercase mt-0.5">
+                    {selectedTrack.title}
+                  </h3>
+                  <span className="font-mono text-xs text-zinc-800">
+                    DURATION: {selectedTrack.duration} // {selectedTrack.releaseYear}
+                  </span>
                 </div>
               </div>
+
+              <p className="font-mono text-xs text-zinc-800 leading-relaxed bg-[#F7F7F2] p-3 border-2 border-[#090909]">
+                {selectedTrack.description}
+              </p>
 
               {/* Lyrics Snippet / Cassette Liner Note */}
               {selectedTrack.lyricsSnippet && (
@@ -173,7 +124,7 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
                   className="px-3 py-1.5 bg-[#090909] text-[#EEFF00] font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 hover:bg-[#7B2CBF] transition-colors border border-[#090909]"
                 >
                   <Headphones className="w-3.5 h-3.5" />
-                  SPOTIFY
+                  OPEN ON SPOTIFY
                   <ExternalLink className="w-3 h-3" />
                 </a>
 
@@ -187,16 +138,6 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
                   APPLE MUSIC
                   <ExternalLink className="w-3 h-3" />
                 </a>
-
-                <a
-                  href={selectedTrack.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1.5 bg-[#090909] text-[#EEFF00] font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 hover:bg-[#7B2CBF] transition-colors border border-[#090909]"
-                >
-                  YOUTUBE
-                  <ExternalLink className="w-3 h-3" />
-                </a>
               </div>
             </div>
           </div>
@@ -205,18 +146,12 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
           <div className="lg:col-span-7 space-y-6">
             {TRACKS.map((track, index) => {
               const isSelected = selectedTrack.id === track.id;
-              const isThisPlaying = isSelected && isPlaying;
               const rotationDegree = index % 2 === 0 ? '-rotate-1' : 'rotate-1';
 
               return (
                 <div
                   key={track.id}
-                  onMouseEnter={() => setHoveredTrackId(track.id)}
-                  onMouseLeave={() => setHoveredTrackId(null)}
-                  onClick={() => {
-                    setSelectedTrack(track);
-                    onFlash();
-                  }}
+                  onClick={() => handleSelectTrack(track)}
                   className={`group relative p-6 border-4 cursor-pointer transition-all duration-300 ${rotationDegree} hover:rotate-0 hover:-translate-y-1 ${
                     isSelected
                       ? 'bg-[#F7F7F2] text-[#090909] border-[#EEFF00] shadow-[8px_8px_0px_#EEFF00]'
@@ -260,7 +195,7 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
                           VIBE: {track.vibe}
                         </span>
                         <span className="px-2 py-0.5 border border-current bg-transparent">
-                          {track.bpm} BPM
+                          {track.duration}
                         </span>
                       </div>
 
@@ -268,20 +203,20 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            handlePlayToggle(track);
+                            handleSelectTrack(track);
                           }}
                           className={`px-4 py-2 border-2 border-current font-mono text-xs font-black uppercase flex items-center gap-2 shadow-[2px_2px_0px_current] active:translate-x-0.5 active:translate-y-0.5 ${
-                            isThisPlaying
+                            isSelected
                               ? 'bg-[#EEFF00] text-[#090909]'
                               : 'bg-transparent hover:bg-[#EEFF00] hover:text-[#090909]'
                           }`}
                         >
-                          {isThisPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
-                          {isThisPlaying ? 'PLAYING 4D' : 'PREVIEW 4D'}
+                          <Headphones className="w-3.5 h-3.5" />
+                          {isSelected ? 'LOADED IN SPOTIFY PLAYER' : 'LOAD IN SPOTIFY'}
                         </button>
 
                         <span className="font-mono text-xs opacity-60">
-                          {isSelected ? '[SELECTED]' : 'CLICK TO LOAD'}
+                          {isSelected ? '[NOW PLAYING]' : 'CLICK TO LOAD'}
                         </span>
                       </div>
                     </div>

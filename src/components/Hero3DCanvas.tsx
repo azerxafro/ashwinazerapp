@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { audioEngine } from '../audio/audioEngine';
 import {
   TesseractState,
   updateTesseractGeometry
@@ -227,32 +226,30 @@ export const Hero3DCanvas: React.FC<Hero3DCanvasProps> = ({ onAudioPeak }) => {
       animationFrameId = requestAnimationFrame(animate);
 
       const elapsedTime = clock.getElapsedTime();
-      const metrics = audioEngine.getAudioMetrics();
 
-      if (metrics.bass > 0.65 && onAudioPeak) {
-        onAudioPeak();
-      }
+      // Fluid geometric breathing oscillations (fluid 60fps, decoupled from Web Audio oscillators)
+      const pulse = Math.sin(elapsedTime * 1.8);
+      const wave = Math.cos(elapsedTime * 1.2);
+      const simBass = 0.25 + 0.15 * Math.max(0, pulse);
+      const simMids = 0.2 + 0.1 * Math.abs(wave);
+      const simHighs = 0.15 + 0.1 * Math.sin(elapsedTime * 3.1);
+      const simEnergy = 0.2 + 0.15 * Math.sin(elapsedTime * 1.5);
 
       // 1. Tesseract 4D Rotation:
-      // Base rotation + mid-frequency velocity burst
-      const tesseractSpeed = 0.5 + metrics.mids * 2.2;
+      const tesseractSpeed = 0.8 + simMids * 1.2;
       tesseractState.angleXW += 0.012 * tesseractSpeed;
       tesseractState.angleYW += 0.018 * tesseractSpeed;
       tesseractState.angleZW += 0.009 * tesseractSpeed;
       tesseractState.angleXY += 0.006 * tesseractSpeed;
 
       // Update Tesseract line vertices in 3D
-      const tesseractScale = 1.7 + metrics.bass * 0.25;
+      const tesseractScale = 1.7 + simBass * 0.2;
       updateTesseractGeometry(tesseractGeometry, tesseractState, tesseractScale, 2.5);
       tesseractGeometry.attributes.position.needsUpdate = true;
 
-      // Pulse color opacity on beat
-      tesseractMaterial.opacity = 0.7 + metrics.energy * 0.3;
-      if (metrics.highs > 0.4) {
-        tesseractMaterial.color.setHex(0xeeff00); // Yellow flash
-      } else {
-        tesseractMaterial.color.setHex(0x7b2cbf); // Riso Purple
-      }
+      // Pulse color opacity
+      tesseractMaterial.opacity = 0.75 + simEnergy * 0.25;
+      tesseractMaterial.color.setHex(0x7b2cbf); // Riso Purple
 
       // 2. Damped Spring Physics for Cursor/Tilt
       const springDamp = 0.08;
@@ -266,20 +263,20 @@ export const Hero3DCanvas: React.FC<Hero3DCanvasProps> = ({ onAudioPeak }) => {
       portraitGroup.position.x = currentTransX;
       portraitGroup.position.y = currentTransY;
 
-      // Dynamic Z-Depth Plate separation driven by audio bass hits!
-      meshLayer1.position.z = 0.04 + metrics.bass * 0.12;
-      meshLayer2.position.z = 0.08 + metrics.bass * 0.22;
+      // Dynamic Z-Depth Plate separation
+      meshLayer1.position.z = 0.04 + simBass * 0.1;
+      meshLayer2.position.z = 0.08 + simBass * 0.18;
 
       // Subtle lateral chromatic slippage between plates
-      meshLayer1.position.x = 0.03 + (currentRotY * 0.2) + (metrics.highs * 0.04);
+      meshLayer1.position.x = 0.03 + (currentRotY * 0.2) + (simHighs * 0.03);
       meshLayer1.position.y = -0.01 + (currentRotX * 0.15);
 
       // 3. Update GLSL Uniforms
       [matLayer0, matLayer1, matLayer2].forEach((mat) => {
         mat.uniforms.uTime.value = elapsedTime;
-        mat.uniforms.uBass.value = metrics.bass;
-        mat.uniforms.uMids.value = metrics.mids;
-        mat.uniforms.uHighs.value = metrics.highs;
+        mat.uniforms.uBass.value = simBass;
+        mat.uniforms.uMids.value = simMids;
+        mat.uniforms.uHighs.value = simHighs;
       });
 
       renderer.render(scene, camera);

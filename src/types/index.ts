@@ -6,6 +6,7 @@ export interface Track {
   catalogNumber: string;
   coverImage: string;
   description: string;
+  spotifyUri: string;
   spotifyUrl: string;
   appleMusicUrl: string;
   youtubeUrl: string;
@@ -14,7 +15,6 @@ export interface Track {
   duration: string;
   vibe: string;
   lyricsSnippet?: string;
-  synthRiffNote?: string;
 }
 
 export interface ArchiveItem {
@@ -29,12 +29,33 @@ export interface ArchiveItem {
   tag: string;
 }
 
-export interface AudioMetrics {
-  bass: number;
-  mids: number;
-  highs: number;
-  energy: number;
-  isPlaying: boolean;
-  isMuted: boolean;
-  currentTrackId?: string;
+export interface SpotifyEmbedController {
+  loadUri: (uri: string) => void;
+  play: () => void;
+  pause: () => void;
+  resume: () => void;
+  togglePlay: () => void;
+  seek: (seconds: number) => void;
+  destroy: () => void;
+  addListener: (event: string, callback: (data: unknown) => void) => void;
+}
+
+export interface SpotifyIFrameAPI {
+  createController: (
+    element: HTMLElement,
+    options: {
+      uri?: string;
+      url?: string;
+      width?: string | number;
+      height?: string | number;
+    },
+    callback: (controller: SpotifyEmbedController) => void
+  ) => void;
+}
+
+declare global {
+  interface Window {
+    onSpotifyIframeApiReady?: (IFrameAPI: SpotifyIFrameAPI) => void;
+    SpotifyIFrameAPI?: SpotifyIFrameAPI;
+  }
 }

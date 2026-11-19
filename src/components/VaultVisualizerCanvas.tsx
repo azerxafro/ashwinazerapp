@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { audioEngine } from '../audio/audioEngine';
 import {
   halftoneBlobVertexShader,
   halftoneBlobFragmentShader
@@ -90,18 +89,22 @@ export const VaultVisualizerCanvas: React.FC<VaultVisualizerCanvasProps> = ({
       animId = requestAnimationFrame(animate);
 
       const elapsed = clock.getElapsedTime();
-      const metrics = audioEngine.getAudioMetrics();
+      const wave = Math.sin(elapsed * 1.5);
+      const simEnergy = 0.2 + 0.1 * Math.abs(wave);
+      const simBass = 0.2 + 0.1 * Math.max(0, wave);
+      const simMids = 0.15 + 0.1 * Math.cos(elapsed * 1.2);
+      const simHighs = 0.12 + 0.08 * Math.sin(elapsed * 2.5);
 
-      // Audio & state reactive modulation
-      const targetIntensity = (activeTrackId ? 1.6 : isHovered ? 1.3 : 0.8) + metrics.energy * 0.8;
+      // State reactive modulation
+      const targetIntensity = (activeTrackId ? 1.6 : isHovered ? 1.3 : 0.8) + simEnergy * 0.5;
       uniforms.uMorphIntensity.value += (targetIntensity - uniforms.uMorphIntensity.value) * 0.1;
 
-      uniforms.uTime.value = elapsed * (1.0 + metrics.mids * 1.5);
-      uniforms.uBass.value = metrics.bass;
-      uniforms.uMids.value = metrics.mids;
-      uniforms.uHighs.value = metrics.highs;
+      uniforms.uTime.value = elapsed * 1.2;
+      uniforms.uBass.value = simBass;
+      uniforms.uMids.value = simMids;
+      uniforms.uHighs.value = simHighs;
 
-      mesh.rotation.y = elapsed * 0.2 + (metrics.bass * 0.4);
+      mesh.rotation.y = elapsed * 0.25;
       mesh.rotation.x = Math.sin(elapsed * 0.15) * 0.2;
 
       ring.rotation.z = elapsed * 0.3;

@@ -139,7 +139,7 @@ export const Dossier: React.FC = () => {
             <div className="border-b-2 border-[#090909] pb-4 font-mono text-xs space-y-1">
               <div className="flex justify-between">
                 <span className="font-bold text-[#7B2CBF]">SUBJECT: ASHWIN RAMESH (ASHWIN AZER)</span>
-                <span>CODE: AA-DOSSIER-4D</span>
+                <span>CODE: AA-DOSSIER-2026</span>
               </div>
               <div className="flex justify-between text-zinc-600">
                 <span>ALIAS: LUCID ASH</span>
@@ -154,7 +154,7 @@ export const Dossier: React.FC = () => {
               </p>
 
               <p>
-                From late-night tracking sessions in Coimbatore and Bengaluru to sound-design laboratories pushing 4D spatial mathematics, Ashwin Azer operates outside industry homogeny. The sonic architecture bridges analog saturation, bone-rattling sub-bass, and emotional vocal narratives.
+                From late-night tracking sessions in Coimbatore and Bengaluru to sound-design laboratories pushing boundary-defying spatial mathematics, Ashwin Azer operates outside industry homogeny. The sonic architecture bridges analog saturation, bone-rattling sub-bass, and emotional vocal narratives.
               </p>
 
               {/* Redacted Bar Stylings for Punk Aesthetic */}
