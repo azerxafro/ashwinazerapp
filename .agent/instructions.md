@@ -36,8 +36,10 @@ npm run dev          # Vite dev server
 npm run build        # Production build (vite build)
 npm run lint         # ESLint flat config (TS + React hooks + React Refresh)
 npm run typecheck    # tsc --noEmit -p tsconfig.app.json
-node scripts/optimize-images.js  # Convert images to WebP via Sharp
+npm run deploy       # Deploy static build
 ```
+
+> **Cloudflare Directive:** When interacting with Cloudflare, use the cf CLI unless the project has a Wrangler configuration file.
 
 ---
 

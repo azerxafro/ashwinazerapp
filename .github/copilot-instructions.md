@@ -10,9 +10,11 @@ Scaffolded with [Bolt](https://bolt.new) (`bolt-vite-react-ts` template). Deploy
 
 - `npm run dev` — Start Vite dev server
 - `npm run build` — Production build (`vite build`)
+- `npm run deploy` — Cloudflare Pages deployment script
 - `npm run lint` — ESLint (flat config, TS + React hooks + React Refresh rules)
 - `npm run typecheck` — `tsc --noEmit -p tsconfig.app.json`
-- `node scripts/optimize-images.js` — Convert source images in `public/images/` to WebP via Sharp
+
+When interacting with Cloudflare, use the cf CLI unless the project has a Wrangler configuration file.
 
 No test framework is configured.
 
