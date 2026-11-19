@@ -47,7 +47,7 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
               02 // THE VAULT
             </h2>
             <p className="font-mono text-xs sm:text-sm text-[#F7F7F2]/80 mt-2 uppercase tracking-wider">
-              DISCOGRAPHY // CASSETTE ARCHIVE // STREAMING ON SPOTIFY
+              DISCOGRAPHY // CASSETTE ARCHIVE // UPCOMING 2026 DROPS // STREAMING ON SPOTIFY
             </p>
           </div>
 
@@ -160,8 +160,14 @@ export const Vault: React.FC<VaultProps> = ({ onFlash }) => {
                 >
                   {/* Cassette Sleeve Spine Stamped Badge */}
                   <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-current pb-3 font-mono text-xs font-bold">
-                    <span className="px-2 py-0.5 bg-[#7B2CBF] text-[#EEFF00] uppercase tracking-wider shadow-[2px_2px_0px_#090909]">
-                      {track.type}
+                    <span
+                      className={`px-2 py-0.5 uppercase tracking-wider shadow-[2px_2px_0px_#090909] font-black ${
+                        track.type === 'UPCOMING'
+                          ? 'bg-[#EEFF00] text-[#090909] border border-[#090909] animate-pulse'
+                          : 'bg-[#7B2CBF] text-[#EEFF00]'
+                      }`}
+                    >
+                      {track.type === 'UPCOMING' ? '★ UPCOMING DROP' : track.type}
                     </span>
                     <span className="tracking-widest">{track.catalogNumber}</span>
                     <span className="opacity-80">REL. {track.releaseYear}</span>

@@ -55,7 +55,9 @@ export const VisualsArchive: React.FC<VisualsArchiveProps> = ({ onFlash }) => {
               <div
                 key={item.id}
                 onClick={() => handleOpenItem(item)}
-                className={`group relative bg-[#F7F7F2] p-4 border-4 border-[#090909] shadow-[8px_8px_0px_#090909] hover:shadow-[10px_10px_0px_#7B2CBF] transition-all duration-300 cursor-pointer ${tilt} hover:rotate-0 hover:-translate-y-1`}
+                className={`group relative bg-[#F7F7F2] p-4 border-4 border-[#090909] shadow-[8px_8px_0px_#090909] hover:shadow-[10px_10px_0px_#7B2CBF] transition-all duration-300 cursor-pointer ${tilt} hover:rotate-0 hover:-translate-y-1 ${
+                  item.aspect === 'landscape' ? 'sm:col-span-2' : ''
+                }`}
               >
                 {/* Black Gaffer Tape Decal Pinning the Card */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-[#090909] -rotate-2 z-20 shadow-[1px_1px_0px_rgba(255,255,255,0.4)] opacity-90" />
@@ -70,7 +72,15 @@ export const VisualsArchive: React.FC<VisualsArchiveProps> = ({ onFlash }) => {
                 </div>
 
                 {/* Image Container with Scan-line Hover Reveal */}
-                <div className="relative mt-3 aspect-square w-full overflow-hidden border-2 border-[#090909] bg-[#090909]">
+                <div
+                  className={`relative mt-3 w-full overflow-hidden border-2 border-[#090909] bg-[#090909] ${
+                    item.aspect === 'landscape'
+                      ? 'aspect-[16/9]'
+                      : item.aspect === 'portrait'
+                      ? 'aspect-[4/5]'
+                      : 'aspect-square'
+                  }`}
+                >
                   {/* Default State: High-Contrast B&W Xerox Halftone */}
                   <img
                     src={item.image}

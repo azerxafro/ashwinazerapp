@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreVault, onFlash }) => {
       {/* Background Ticker Tape (Top) */}
       <div className="w-full bg-[#090909] text-[#EEFF00] py-2 border-y-2 border-[#090909] overflow-hidden whitespace-nowrap font-mono text-xs sm:text-sm font-black tracking-widest flex items-center shadow-[0_4px_0_#7B2CBF]">
         <div className="animate-[marquee_24s_linear_infinite] flex items-center space-x-8 shrink-0">
-          <span className="text-[#EEFF00] bg-[#7B2CBF] px-2 py-0.5">[NEW RELEASE: "NERAM" — NOV 24, 2026]</span>
+          <span className="text-[#EEFF00] bg-[#7B2CBF] px-2 py-0.5">[UPCOMING RELEASES: "NERAM" (NOV 24) • "PROMISE" (2026) • "IRAVIN NIZHAL" (2026)]</span>
           <span className="text-[#7B2CBF]">///</span>
           <span>ASHWIN AZER (COIMBATORE, INDIA)</span>
           <span className="text-[#7B2CBF]">///</span>
@@ -28,13 +28,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreVault, onFlash }) => {
           <span className="text-[#7B2CBF]">///</span>
           <span>WALLMAG RAP AWARDS 2026 TOP 250 CREATOR</span>
           <span className="text-[#7B2CBF]">///</span>
-          <span>THE AZER (VOL. 2) COMING 2026</span>
+          <span>THE AZER (VOL. 2) OUT NOW</span>
           <span className="text-[#7B2CBF]">///</span>
           <span>LAT: 11.0168° N, 76.9558° E</span>
           <span className="text-[#7B2CBF]">///</span>
         </div>
         <div className="animate-[marquee_24s_linear_infinite] flex items-center space-x-8 shrink-0" aria-hidden="true">
-          <span className="text-[#EEFF00] bg-[#7B2CBF] px-2 py-0.5">[NEW RELEASE: "NERAM" — NOV 24, 2026]</span>
+          <span className="text-[#EEFF00] bg-[#7B2CBF] px-2 py-0.5">[UPCOMING RELEASES: "NERAM" (NOV 24) • "PROMISE" (2026) • "IRAVIN NIZHAL" (2026)]</span>
           <span className="text-[#7B2CBF]">///</span>
           <span>ASHWIN AZER (COIMBATORE, INDIA)</span>
           <span className="text-[#7B2CBF]">///</span>
@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreVault, onFlash }) => {
               NEW RELEASE // “NERAM” — NOV 24, 2026
             </span>
             <span className="bg-[#090909] text-[#EEFF00] font-mono text-xs font-black px-3 py-1 uppercase border-2 border-[#090909] shadow-[3px_3px_0px_#7B2CBF] rotate-1">
-              REYMEN RODERICKS × ASHWIN AZER × HAVOC SURYA
+              UPCOMING // “PROMISE” • “IRAVIN NIZHAL” (2026)
             </span>
             <span className="bg-[#F7F7F2] text-[#090909] font-mono text-xs font-black px-2 py-1 uppercase shadow-[2px_2px_0px_#090909] border border-[#090909]">
               GENESIS COMPOSITION // 10TH GRADE

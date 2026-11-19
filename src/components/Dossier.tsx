@@ -182,6 +182,25 @@ export const Dossier: React.FC = () => {
 
           {/* Right Column: Milestones & Awards Clippings */}
           <div className="md:col-span-5 space-y-6">
+            {/* Classified Subject Portrait */}
+            <div className="relative bg-[#090909] text-[#F7F7F2] p-4 border-4 border-[#090909] shadow-[8px_8px_0px_#7B2CBF] -rotate-1 group">
+              <div className="absolute -top-3 left-8 w-24 h-5 bg-[#EEFF00] -rotate-2 shadow-sm opacity-90 z-20" />
+              <div className="relative aspect-[4/5] w-full overflow-hidden border-2 border-zinc-700 bg-zinc-950">
+                <img
+                  src="/images/ashwin-portrait-bw.jpg"
+                  alt="Ashwin Azer Official Portrait"
+                  className="w-full h-full object-cover filter contrast-125 brightness-95 group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute bottom-2 left-2 bg-[#EEFF00] text-[#090909] font-mono text-[10px] font-black px-2 py-0.5 border border-[#090909]">
+                  SUBJECT: ASHWIN RAMESH // 2026
+                </div>
+              </div>
+              <div className="flex items-center justify-between font-mono text-[10px] font-bold text-zinc-400 pt-2 border-t border-zinc-800 mt-2">
+                <span>IDENTITY: ASHWIN AZER</span>
+                <span className="text-[#EEFF00]">COIMBATORE // MONADELTA</span>
+              </div>
+            </div>
+
             {/* Milestone Card 1: WallMag Rap Awards */}
             <div className="relative bg-[#EEFF00] text-[#090909] p-6 border-4 border-[#090909] shadow-[8px_8px_0px_#7B2CBF] rotate-1">
               <div className="absolute -top-3 right-6 w-20 h-5 bg-[#090909] rotate-1 shadow-sm opacity-90" />
