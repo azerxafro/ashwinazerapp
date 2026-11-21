@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ashwinazer.rocks/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/neram-cover.jpg</image:loc>
+      <image:title>Ashwin Azer - Neram Official Cover Artwork</image:title>
+      <image:caption>Official release artwork for Neram by Reymen Rodericks, Ashwin Azer, Havoc Surya (Releasing November 24, 2026)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/promise-cover.jpg</image:loc>
+      <image:title>Ashwin Azer - Promise Official Cover Artwork</image:title>
+      <image:caption>Upcoming 2026 romantic R&amp;B single Promise by Ashwin Azer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/iravin-nizhal-cover.jpg</image:loc>
+      <image:title>Ashwin Azer - Iravin Nizhal Official Master Artwork</image:title>
+      <image:caption>Official master artwork for upcoming 2026 single Iravin Nizhal by Ashwin Azer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/ashwin-portrait-bw.jpg</image:loc>
+      <image:title>Ashwin Azer - Official Subject Zero Studio Portrait</image:title>
+      <image:caption>High-contrast monochrome portrait of recording artist and producer Ashwin Azer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/vevo-banner.jpg</image:loc>
+      <image:title>Ashwin Azer - VEVO Visual Saga Banner</image:title>
+      <image:caption>Official cinematic cyberpunk visual identity banner for Ashwin Azer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/ashwin-portrait-closeup.jpg</image:loc>
+      <image:title>Ashwin Azer - Intimate Bokeh Closeup Portrait</image:title>
+      <image:caption>Late-night console vocal tracking session portrait at Monadelta Studios</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/the-azer-vol2-cover.jpg</image:loc>
+      <image:title>Ashwin Azer - THE AZER (VOL. 2) Official Artwork</image:title>
+      <image:caption>Official retrofuturistic anime city pop artwork for THE AZER (VOL. 2)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/27club-cover.jpg</image:loc>
+      <image:title>Ashwin Azer - 27club Single Cover</image:title>
+      <image:caption>Angel wings and vintage vinyl tribute honoring Juice WRLD</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/maserati-cover.jpg</image:loc>
+      <image:title>Ashwin Azer - MASERATI Single Artwork</image:title>
+      <image:caption>Cyberpunk rain-slicked boulevard artwork for MASERATI by Ashwin Azer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/marupiravi-cover.jpg</image:loc>
+      <image:title>Ashwin Azer - Marupiravi Album Artwork</image:title>
+      <image:caption>Psychedelic dripping cosmos illustration for Marupiravi by Ashwin Azer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/nee-dhan-en-beat-cover.jpg</image:loc>
+      <image:title>Ashwin Azer &amp; Wynn Zariah - Nee Dhan En Beat Cover</image:title>
+      <image:caption>Hardware Moog synthesizer and acoustic guitar workspace at Monadelta Productions</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashwinazer.rocks/images/illuminaty-cover.jpg</image:loc>
+      <image:title>Ashwin Azer &amp; Wa'Cali - Illuminaty Cover</image:title>
+      <image:caption>Sacred geometry golden pyramid and glowing eye artwork for Illuminaty</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ashwinazer.rocks/#01-hero</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ashwinazer.rocks/#02-vault</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ashwinazer.rocks/#03-archive</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ashwinazer.rocks/#04-dossier</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ashwinazer.rocks/#05-transmissions</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

@@ -1,7 +1,7 @@
 {
-  "name": "Ashwin Azer | Official Portal",
+  "name": "Ashwin Azer | Official Artist Portal",
   "short_name": "AZER",
-  "description": "Official 4D artist portal and press kit for independent music artist Ashwin Azer (Lucid ASH).",
+  "description": "Official artist portal, discography vault, and press kit for independent music artist and producer Ashwin Azer (Lucid ASH).",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#EEFF00",
@@ -18,7 +18,7 @@
       "type": "image/png"
     },
     {
-      "src": "/images/icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
